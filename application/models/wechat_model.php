@@ -14,6 +14,9 @@ class Wechat_model extends CI_Model {
 	*/
 	public function storeWechatInfo($data)
 	{
+        echo 'in';
+        flush();
+        ob_flush();
 		$tag = !empty($data) && count($data) != 0;
 		if($tag) {
 			try {

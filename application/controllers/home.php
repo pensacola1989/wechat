@@ -22,6 +22,7 @@ class Image
 	//	$this->save_dir = $save_dir;
 		$this->type = $type;
 		$this->category = $category;
+
 	}
 
 	/*
@@ -37,7 +38,7 @@ class Image
             {
                 $this->downloadImgByUrl($this->category,$ls->imgurl,'');
                 echo $ls->imgurl;
-                echo '<span style="color:blue;">stored!</span><br/>';
+                echo '<span style="color:#eebcff;">stored!</span><br/>';
                 flush();
                 ob_flush();
             }
@@ -283,7 +284,7 @@ class Home extends CI_Controller
 	{
 		header("Content-type: text/html; charset=utf-8");
 		// $beginPage = 1;
-		$handler = new pageOfCateory(20);
+		$handler = new pageOfCateory(1);
 		// $totalPageNum = $handler->getTotalPageNum();
 		// while ($beginPage <= $totalPageNum) {
 			
@@ -312,7 +313,7 @@ class Home extends CI_Controller
 
 	public function dbTest() 
 	{
-        $imgUrls = $this->model->getUrlsByCategory(20);
+        $imgUrls = $this->model->getUrlsByCategory(1);
         $img = new Image(1,'1');
         $img->downloadImgFromList($imgUrls);
 
@@ -328,4 +329,5 @@ class Home extends CI_Controller
 
 		// $this->model->storeWechatInfo($ret);
 	}
+
 }
