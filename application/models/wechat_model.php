@@ -36,10 +36,12 @@ class Wechat_model extends CI_Model {
 	public function getUrlsByCategory($category)
 	{
 		$this->db
-            ->select('imgurl')
+            ->select('imgurl,wechatid')
             ->from('info')
             ->where('wechatType',$category);
         $query = $this->db->get();
+        //var_dump($query->result());
+        //echo $this->db->last_query();
         //var_dump($query->result());
         return $query->result();
 	}

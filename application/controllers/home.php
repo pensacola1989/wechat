@@ -37,7 +37,10 @@ class Image
             foreach($list as $ls)
             {
                 $this->downloadImgByUrl($this->category,$ls->imgurl,'');
+                // update the database use the 'new image Path';
+                
                 echo $ls->imgurl;
+//                echo '<h3 style="color:green;">' . $ls->wechatid . '</h3>';
                 echo '<span style="color:#eebcff;">stored!</span><br/>';
                 flush();
                 ob_flush();
@@ -223,15 +226,6 @@ class pageOfCateory
 				ob_flush();
 			}
 			return $data;
-			// var_dump($data);
-			// foreach ($data as $d) {
-			// 	$ret['wechatid'] = $d['wechatid'];
-			// 	$ret['wechatdes'] = $d['des'];
-			// 	$ret['date'] = time();
-			// 	$ret['imgurl'] = $d['codeimg'];
-
-			// 	$this->storeToDB($ret);
-			// }
 		}
 	}
 
@@ -294,6 +288,7 @@ class Home extends CI_Controller
 			$ret['wechatid'] = $d['wechatid'];
 			$ret['wechatdes'] = $d['des'];
 			//$ret['date'] = time();
+			$ret['wechatname'] = $d['name'];
 			$ret['imgurl'] = $d['codeimg'];
 			$ret['wechatType'] = $d['type'];
 
@@ -329,5 +324,14 @@ class Home extends CI_Controller
 
 		// $this->model->storeWechatInfo($ret);
 	}
+
+    public function test()
+    {
+        $val = "wwwww                 xxxxx";
+        //$val = str_replace(array(' ','&nbsp;'),'',$val);
+        $ret = preg_split('/ /',$val);
+        $r = $ret[0] . ' ' . $ret[count($ret) - 1];
+        echo $r;
+    }
 
 }
